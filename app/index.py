@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
 from flask_script import Manager
 
 app = Flask(__name__)
