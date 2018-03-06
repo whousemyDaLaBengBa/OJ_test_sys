@@ -16,7 +16,7 @@
   #registerform > form
   {
     border: 1px solid #d1d5da;
-    border-radius: 3px;
+    border-radius: 5px;
     width:30%;
     min-width:20em;
     margin:auto; /*设置外边距*/
@@ -129,7 +129,7 @@
 
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
 </head>
 
@@ -138,8 +138,9 @@
 
 <h1>华中农业大学考试系统</h1>
 
-<div id="registerform">
-  <form action="/user/login" method="POST" onsubmit="return validateform()">
+<body background="背景图4.jpg">
+<div id="registerform" >
+  <form action="/user/login" method="POST" onsubmit="return validateform()" style="background-color: white;">
     <dl>
 
       <dt><label>学号</label></dt>
@@ -158,5 +159,5 @@
     <dl>
   </form>
 </div>
-
+</body>
 </html>
