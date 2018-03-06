@@ -34,6 +34,7 @@
     margin-right: 5px;
     background-color: #fafbfc;
     min-height: 20px;
+    max-width: 96%;
     padding: 6px 8px;
     line-height: 20px;
     color: #24292e;
@@ -101,29 +102,64 @@
 <script>
   function check_username()
   {
+    var username, username_note, u_len, bo;
     username = document.getElementById("username").value;
     username_note = document.getElementById("username_note");
     u_len = username.length;
+    bo = 1;
     if (u_len == 0)
     {
       username_note.innerHTML = "用户名不能为空";
       username_note.style.color = "red";
+      bo = 0;
+    }
+    else if (u_len<5 || u_len>15 )
+    {
+      username_note.innerHTML = "用户名只能为5-15个字符";
+      username_note.style.color = "red";
+      bo = 0;
     }
     else
     {
       username_note.innerHTML = "请输入学号";
       username_note.style.color = "#586069";
     }
+    return bo;
   }
 
   function check_password()
   {
-
+    var password, password_note, p_len, bo;
+    password = document.getElementById("password").value;
+    password_note = document.getElementById("password_note");
+    p_len = password.length;
+    bo = 1;
+    if (p_len == 0)
+    {
+      password_note.innerHTML = "密码不能为空";
+      password_note.style.color = "red";
+      bo = 0;
+    }
+    else if (p_len<5 || p_len>25 )
+    {
+      password_note.innerHTML = "密码必须为5-25个字符";
+      password_note.style.color = "red";
+      bo = 0;
+    }
+    else
+    {
+      password_note.innerHTML = "请输入密码";
+      password_note.style.color = "#586069";
+    }
+    return bo;
   }
 
   function validateform()
   {
-    return false;
+    if (check_password() && check_username())
+      {return true;}
+    else
+      {return false;}
   }
 </script>
 
@@ -138,7 +174,7 @@
 
 <h1>华中农业大学考试系统</h1>
 
-<body background="背景图4.jpg">
+<body background={{url_for('static', filename = 'img/index背景.jpg')}}>
 <div id="registerform" >
   <form action="/user/login" method="POST" onsubmit="return validateform()" style="background-color: white;">
     <dl>
