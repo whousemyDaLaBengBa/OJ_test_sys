@@ -67,8 +67,8 @@
   #login_button 
   {
     color: #fff;
-    background-color: #28a745;
-    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+    background-color: #76a5b6;
+    background-image: linear-gradient(-180deg, #76a5b6 0%, #76a5b6 90%);
     background-repeat: repeat-x;
     background-position: -1px -1px;
     background-size: 110% 110%;
@@ -86,19 +86,46 @@
   }
   #login_button:hover 
   {
-    background-color: #269f42;
-    background-image: linear-gradient(-180deg, #2fcb53 0%, #269f42 90%);
+    background-color: #366b7e;
+    background-image: linear-gradient(-180deg, #366b7e 0%, #366b7e 90%);
     background-position: -.5em;
     border-color: rgba(27,31,35,0.5);
   }
   #login_button:focus
   {
-    box-shadow: 0 0 0 0.2em rgba(52,208,88,0.4);
+    box-shadow: 0 0 0 0.2em rgba(21, 96, 131, 0.4);
   }
 /*此处感谢范瑞提供的css样式*/
 </style>
 
+<script>
+  function check_username()
+  {
+    username = document.getElementById("username").value;
+    username_note = document.getElementById("username_note");
+    u_len = username.length;
+    if (u_len == 0)
+    {
+      username_note.innerHTML = "用户名不能为空";
+      username_note.style.color = "red";
+    }
+    else
+    {
+      username_note.innerHTML = "请输入学号";
+      username_note.style.color = "#586069";
+    }
+  }
 
+  function check_password()
+  {
+
+  }
+
+  function validateform()
+  {
+    return false;
+  }
+</script>
 
 <html>
 <head>
@@ -112,19 +139,19 @@
 <h1>华中农业大学考试系统</h1>
 
 <div id="registerform">
-  <form action="/user/login" method="POST">
+  <form action="/user/login" method="POST" onsubmit="return validateform()">
     <dl>
 
-      <dt><label>用户名</label></dt>
+      <dt><label>学号</label></dt>
       <dd>
-        <input class="loginform" id="username" type="text" name="username" maxlength="15" >
-        <p class="note">请输入学号</p>
+        <input class="loginform" id="username" onchange="check_username()" type="text" name="username" maxlength="15" >
+        <p class="note" id="username_note">请输入学号</p>
       </dd>　
 
       <dt><label>密码</label></dt>
       <dd>
-          <input class="loginform" id="password" type="password" name="password" maxlength="25" >
-          <p class="note">请输入密码</p>
+          <input class="loginform" id="password" onchange="check_password()" type="password" name="password" maxlength="25" >
+          <p class="note" id="password_note">请输入密码</p>
       </dd>
       <br>
       <dd><button id="login_button" type="submit">登录</button></dd>
