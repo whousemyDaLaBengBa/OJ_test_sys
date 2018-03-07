@@ -2,7 +2,6 @@ from flask import Flask, render_template
 from flask_script import Manager
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
 
 
 @app.route('/')
