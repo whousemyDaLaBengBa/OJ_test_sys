@@ -1,0 +1,217 @@
+{% extends "navbar.html" %}
+{% block custom_title %}<title>考生账号注册</title>{% endblock %}
+
+{% block custom_style %}
+<style>
+  #registerform
+  {
+    padding-top:5em;
+  }
+  
+  #registerform > form
+  {
+    border: 1px solid #d1d5da;
+    border-radius: 5px;
+    width:30%;
+    min-width:20em;
+    margin:auto; /*设置外边距*/
+    padding:1em 3em;
+  }
+  #registerform label
+  {
+    position: static;
+    font-weight: 600;
+    line-height:1.0em;
+  }
+  #registerform .loginform
+  {
+    width: 100%;
+    margin-right: 5px;
+    background-color: #fafbfc;
+    min-height: 20px;
+    padding: 6px 8px;
+    line-height: 20px;
+    color: #24292e;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+  }
+  #registerform .loginform:focus/*获取焦点时的样式*/
+  {
+    background-color: #fff;
+    border-color: #2188ff;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,0.075), 0 0 0 0.2em rgba(3,102,214,0.3);
+  }
+  #registerform .note /*注脚样式*/
+  {
+    min-height: 17px;
+    margin: 4px 0 2px;
+    font-size: 12px;
+    color: #586069;
+  }
+  #registerform dd
+  {
+    -webkit-margin-start: 0;/*将dd和dt对其*/
+  }
+  
+  #login_button 
+  {
+    color: #fff;
+    background-color: #76a5b6;
+    background-image: linear-gradient(-180deg, #76a5b6 0%, #76a5b6 90%);
+    background-repeat: repeat-x;
+    background-position: -1px -1px;
+    background-size: 110% 110%;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid rgba(27,31,35,0.2);
+    border-radius: 0.25em;
+    width:100%;
+  }
+  #login_button:hover 
+  {
+    background-color: #366b7e;
+    background-image: linear-gradient(-180deg, #366b7e 0%, #366b7e 90%);
+    background-position: -.5em;
+    border-color: rgba(27,31,35,0.5);
+  }
+  #login_button:focus
+  {
+    box-shadow: 0 0 0 0.2em rgba(21, 96, 131, 0.4);
+  }
+/*此处感谢范瑞提供的css样式*/
+</style>
+{% endblock %}
+
+{% block custom_script %}
+<script>
+  function check_username()
+  {
+    var username, username_note, u_len, bo;
+    username = document.getElementById("username").value;
+    username_note = document.getElementById("username_note");
+    u_len = username.length;
+    bo = 1;
+    if (u_len == 0)
+    {
+      username_note.innerHTML = "用户名不能为空";
+      username_note.style.color = "red";
+      bo = 0;
+    }
+    else if (u_len<5 || u_len>15 )
+    {
+      username_note.innerHTML = "用户名只能为5-15个字符";
+      username_note.style.color = "red";
+      bo = 0;
+    }
+    else
+    {
+      username_note.innerHTML = "请输入学号";
+      username_note.style.color = "#586069";
+    }
+    return bo;
+  }
+  function check_password()
+  {
+    var password, password_note, p_len, bo;
+    password = document.getElementById("password").value;
+    password_note = document.getElementById("password_note");
+    p_len = password.length;
+    bo = 1;
+    if (p_len == 0)
+    {
+      password_note.innerHTML = "密码不能为空";
+      password_note.style.color = "red";
+      bo = 0;
+    }
+    else if (p_len<5 || p_len>25 )
+    {
+      password_note.innerHTML = "密码必须为5-25个字符";
+      password_note.style.color = "red";
+      bo = 0;
+    }
+    else
+    {
+      password_note.innerHTML = "请输入密码";
+      password_note.style.color = "#586069";
+    }
+    return bo;
+  }
+
+  function check_password()
+  {
+    var rpassword, rpassword_note, rp_len, bo;
+    rpassword = document.getElementById("rpassword").value;
+    rpassword_note = document.getElementById("rpassword_note");
+    rp_len = rpassword.length;
+    bo = 1;
+    if (rp_len == 0)
+    {
+     rpassword_note.innerHTML = "请确认密码";
+      rpassword_note.style.color = "red";
+      bo = 0;
+    }
+    else if (rp_len<5 || rp_len>25 )
+    {
+      rpassword_note.innerHTML = "密码必须为5-25个字符";
+      rpassword_note.style.color = "red";
+      bo = 0;
+    }
+    else
+    {
+      rpassword_note.innerHTML = "请确认密码";
+      rpassword_note.style.color = "#586069";
+    }
+    return bo;
+  }
+  function validateform()
+  {
+    if (check_password() && check_username())
+      {return true;}
+    else
+      {return false;}
+  }
+</script>
+{% endblock %}
+
+
+{% block custom_div %}
+<div id="registerform" >
+  <form action="/user/login" method="POST" onsubmit="return validateform()" style="background-color:#E0FFFF;">
+    <div> 注册账号</div>
+    <dl>　
+      <dt><label>学号</label></dt>
+      <dd>
+        <input class="loginform" id="username" onchange="check_username()" type="text" name="username" maxlength="15" >
+        <p class="note" id="username_note">请输入学号</p>
+      </dd>　
+
+
+      <dt><label>密码</label></dt>
+      <dd>
+          <input class="loginform" id="password" onchange="check_password()" type="password" name="password" maxlength="25" >
+          <p class="note" id="password_note">请输入密码</p>
+      </dd>
+
+      <dt><label>确认密码</label></dt>
+      <dd>
+          <input class="loginform" id="rpassword" onchange="rcheck_password()" type="rpassword" name="rpassword" maxlength="25" >
+          <p class="note" id="rpassword_note">确认密码</p>
+      </dd>
+      <br>
+      <dd><button id="login_button" type="submit">确认注册</button></dd>
+    <dl>
+  </form>
+</div>
+{% endblock %}
