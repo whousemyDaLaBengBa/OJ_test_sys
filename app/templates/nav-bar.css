@@ -1,51 +1,35 @@
-body > * 
-{
-  font-family:Arial, Helvetica, sans-serif;
-  /*设置字体*/
+.navbar-custom {
+    background-color:cornflowerblue;
+    color:white;
+    font-weight:bold;
+    border-radius:0;
+    line-height: 15%;/*设置高度*/
 }
 
-#head > .menu > div:first 
-{
-  border-left:hidden;
-}
-#head > .menu li 
-{
-  border-top:white thin solid;
-}
-input 
-{
-  font-family:monospace;
-}
-#head > .menu a
-{
-  float: left;/*块状元素默认换行，得用float调整*/
-  display: block;/*这是为了让我们能调整ａ的宽高所以将ａ设为块状元素*/
-  text-decoration:none;
-  color:#ffffff;
-  background-color: rgb(101, 137, 209);
-  font-weight:bold;
-  text-align:center;
-  min-height:1.5em;
-  line-height:2.0em;
-  width: 20%;
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
 }
 
-#head > .menu a:hover
-{
-  background-color: rgb(38, 59, 102);
+.navbar-custom .navbar-nav > .active > a {
+    color: #ffffff;
+    background-color:transparent;
 }
 
-.dropdown
-{
-  float: left;
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .open >a {
+    text-decoration: none;
+    background-color: #e74c3c;
 }
 
-.dropdown > .dropdown-tog
-{
-  color:#ffffff;
-  background-color: rgb(101, 137, 209);
-  font-weight:bold;
-  text-align:center;
-  min-height:1.5em;
-  line-height:1.5em;
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+    background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+    background-color:#28323C;
 }
