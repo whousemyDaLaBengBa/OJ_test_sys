@@ -1,18 +1,28 @@
-from flask import Flask, render_template
+import os.path as rp
+path = rp.realpath(__file__)
+path = path[0:-13] #app所在的路径的父文件夹
+import sys
+sys.path.append(path)
+#将app加入为系统包，方便调用
+
+from flask import render_template
 from flask_script import Manager
+#import 必要的包
 
-app = Flask(__name__)
+import app.config as cf
+from app import app as mainapp
+import app.user.add_user
+#import网站内容
 
 
-@app.route('/')
+@mainapp.route('/')
 def index():
-    return render_template('navbar.html')
+    return render_template('index.html')
 
 
 
-manager = Manager(app)
+
+manager = Manager(mainapp)
 
 if __name__ == '__main__':
     manager.run()
-
-#这是一行注释
