@@ -1,5 +1,6 @@
 HZAU TEST OJ SYSTEM
-需要安装的包
+锟斤拷要锟斤拷装锟侥帮拷
 python3
 flask
 flask_script
+

@@ -11,15 +11,13 @@ from flask_script import Manager
 
 import app.config as cf
 from app import app as mainapp
-import app.user.add_user
+import app.user
 #import网站内容
 
 
 @mainapp.route('/')
 def index():
     return render_template('index.html')
-
-
 
 
 manager = Manager(mainapp)
