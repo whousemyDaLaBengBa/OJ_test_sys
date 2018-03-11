@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+</head>
+
+<body>
+<div id="registerform" >
+    <form action="/problem/addproblem" method="GET" >
+        <input  type="text" name="ProblemHead" >
+        <br>
+        <textarea name="ProblemDescription"></textarea>
+        <br>
+        <textarea name="Input"></textarea>
+        <br>
+        <textarea name="Output"></textarea>
+        <br>
+        <textarea name="SampleInput"></textarea>
+        <br>
+        <textarea name="SampleOutput"></textarea>
+        <br>
+        <textarea name="Hint"></textarea>
+        <br>
+        <input  type="text" name="Author" >
+        <br>
+        <!--最后两个表单非必填，其他的为必填-->
+        <input type="submit" value="提交">
+    </form>
+  </div>
+</body>
+</html>

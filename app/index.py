@@ -12,6 +12,7 @@ from flask_script import Manager
 import app.config as cf
 from app import app as mainapp
 import app.user
+import app.Problems
 #import网站内容
 
 
