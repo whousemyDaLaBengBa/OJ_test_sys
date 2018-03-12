@@ -3,7 +3,7 @@ from flask import render_template
 from flask import request, session, redirect
 
 #检查传参是否符合要求
-def Check_Problem(TimeLimit, MemoryLimit,ProblemHead, ProblemDescription, Input, Output, SampleInput, SampleOutput):
+def Check_Problem(TimeLimit, MemoryLimit, ProblemHead, ProblemDescription, Input, Output, SampleInput, SampleOutput):
     if (TimeLimit=='' or TimeLimit==None):#如果什么都不填则传回来的是''
         return False
 
