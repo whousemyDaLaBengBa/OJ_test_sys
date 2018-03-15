@@ -1,4 +1,5 @@
 from app import app as mainapp
+from app.Problems.Model import db, Problem
 from flask import render_template
 from flask import request, session, redirect
 
@@ -31,6 +32,19 @@ def Check_Problem(TimeLimit, MemoryLimit, ProblemHead, ProblemDescription, Input
     return True
 
 
+def push_to_db(
+    TimeLimit, MemoryLimit, ProblemHead, ProblemDescription, 
+    Input, Output, SampleInput, SampleOutput, Hint, Author, Source):
+
+    problem_test = Problem(
+        2, int(TimeLimit), int(MemoryLimit), ProblemHead,
+        ProblemDescription, Input, Output, SampleInput, SampleOutput, Hint
+        ,Author,Source)
+
+    db.session.add(problem_test)
+    db.session.commit()
+
+
 @mainapp.route('/problem/addproblem',methods=['GET','POST'])
 def addproblem():
     try:
@@ -51,5 +65,4 @@ def addproblem():
         if (Check_Problem(TimeLimit, MemoryLimit, ProblemHead, ProblemDescription, Input, Output, SampleInput, SampleOutput)==False):
             return render_template("addproblem.html")
         else:
-            pass
-            #这里写写入题目的函数
+            push_to_db(TimeLimit, MemoryLimit, ProblemHead, ProblemDescription, Input, Output, SampleInput, SampleOutput, Hint, Author, Source)

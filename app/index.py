@@ -9,7 +9,6 @@ from flask import render_template
 from flask_script import Manager
 #import 必要的包
 
-import app.config as cf
 from app import app as mainapp
 import app.user
 import app.Problems
