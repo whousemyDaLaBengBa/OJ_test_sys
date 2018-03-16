@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 
+<<<<<<< HEAD
 <link rel="stylesheet" href="bootstrap.min.css">  
 <link rel="stylesheet" href="nav-bar.css">
+=======
+<link rel="stylesheet" href={{url_for('static', filename = 'css/nav-bar.css')}}>
+{% block custom_style %}
+{% endblock %}
+
+{% block custom_script %}
+{% endblock %}
+>>>>>>> 6dfb53713f6fe2d31fee158224ee95f9519edecd
 
 <html>
 <head>
@@ -10,6 +19,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
     <header>
         <nav class="navbar navbar-custom">
           <a class="navbar-brand" href="/contest">Contest</a>
@@ -20,5 +30,35 @@
         </nav>
     </header>
 	
+=======
+{% block custom_title %}
+{% endblock %}
+
+<body id="top">
+  <div id="head">
+    <div class="menu">
+      <div class=normal>
+        <a href="/contest">Contest</a>
+        <a href="/problems">Problems</a>
+        <a href="/ranklist">RankList</a>
+        <a href="/status">Status</a>
+      </div>
+
+      <div class="dropdown">
+          <span>Users</span>
+          <div class="dropdown-content">
+            <a href="/user/profile">Your Profile</a>
+            <a href="/user/adduser">Add User</a>
+            <a href="/user/addmultiuser">Add Muliy User</a>
+            <a href="/user/deleteuser">Delete User</a>
+            <a href="/user/logout">Log Out</a>
+          </div>
+      </div>
+
+    </div>
+  </div>
+  {% block custom_div %}
+  {% endblock %}
+>>>>>>> 6dfb53713f6fe2d31fee158224ee95f9519edecd
 </body>
 </html>

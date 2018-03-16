@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+
+
+<style type="text/css">
+  #table1{
+  cursor:hand;
+  }
+  #table1 .curr {
+   color: rgb(6, 8, 6);
+  }
+  #table1 .call {
+   color: rgb(17, 11, 11);
+   background-color: rgb(238, 247, 238);
+  }
+  </style>
+  
+<script>
+function change(obj){
+var checkItems=document.getElementById("table1");
+for(var i=0;i<checkItems.cells.length;i++){
+     checkItems.cells[i].className = "call";
+  }
+obj.className="curr";
+ window.open(obj.innerHTML);
+}
+function mouseover(obj){
+obj.style.color='#FAC205';
+}
+function mouseout(obj){
+obj.style.color="";
+}
+</script>
+
+
+<html>
+<head>
+ <meta charset="utf-8">
+<body>
+<table width="10%" border="1" cellspacing="0" cellpadding="2" id="table1">
+  <tr>
+    <td class="curr" onclick="change(this)" onmousemove="mouseover(this)" onmouseout="mouseout(this)">添加单个账号</td>
+   </tr>
+   <tr>
+    <td class="call" onclick="change(this)" onmousemove="mouseover(this)" onmouseout="mouseout(this)">添加多个账号</td>
+   </tr>
+</table>
+</body>
+</head>  
+</html>
+
