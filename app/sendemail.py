@@ -10,7 +10,7 @@ def send_async_email(app,msg):
     with app.app_context():
         mail.send(msg)
 
-def send_mail(to,subject,template,**kwargs)：
+def send_mail(to,subject,template,**kwargs):
     msg=Message(subject,\
     sender=config[default].MAIL_DEFAULT_SENDER,\
     recipientd=[to])
